@@ -1,0 +1,52 @@
+body {
+  background-image: linear-gradient(rgb(255, 255, 255), rgba(7, 32, 86, 0.6)),
+    url(./HR-Management.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  backface-visibility: hidden;
+}
+::selection {
+  background-color: #1864ab; /* Màu nền khi bôi đen */
+  color: #fff; /* Màu chữ khi bôi đen */
+}
+.logo-img {
+  width: 200px;
+  height: 100px;
+  margin: 0 auto;
+  display: block;
+}
+.main-logo {
+  margin-top: 100px;
+}
+.icon-sgv {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  display: block;
+}
+/* Style the submit button */
+.btn-DangNhap {
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: #1864ab;
+  color: white;
+}
+.btn-DangNhap:hover,
+.btn-DangNhap:active {
+  background-color: #e7f5ff;
+  color: #1864ab;
+  box-shadow: 2px 2px 5px #e7f5ff;
+  transition: all 0.3s ease-in-out;
+}
+a {
+  color: #1864ab;
+  font-weight: bold;
+}
+a:hover,
+a:active {
+  color: #1864ab;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}

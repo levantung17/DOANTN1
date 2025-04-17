@@ -1,0 +1,32 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: project_web
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+    ports:
+      - "3307:3306"
+    networks:
+      - app-network
+
+  tomcat:
+    build: .  # Chỉ định Dockerfile trong thư mục hiện tại
+    container_name: tomcat_container
+    ports:
+      - "8080:8080"  # Mở cổng 8080 cho Tomcat
+    depends_on:
+      - mysql  # Đảm bảo MySQL đã khởi động trước Tomcat
+    environment:
+      - DB_URL=jdbc:mysql://mysql:3306/project_web  # Đảm bảo URL kết nối đúng
+      - DB_USER=user  # Sử dụng tên người dùng là 'user'
+      - DB_PASSWORD=pass  # Sử dụng mật khẩu là 'pass'
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

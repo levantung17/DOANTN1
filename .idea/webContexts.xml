@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/Admin/admin.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Admin" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/GiamDoc/front-end/UpdateInfor.jsp" value="file://$PROJECT_DIR$/src/main/webapp/GiamDoc/front-end" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/NhanVienMain.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/views/giamdoc/QuanLyNhanVien.jsp" value="file://$PROJECT_DIR$/src/main/webapp/views/giamdoc" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/views/nhanvien/nhanVienCapNhatThongTin.jsp" value="file://$PROJECT_DIR$/src/main/webapp/views/nhanvien" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/views/quanli/QuanLiChiNhanh.jsp" value="file://$PROJECT_DIR$/src/main/webapp/views/quanli" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/views/quanli/QuanLiNhanVien.jsp" value="file://$PROJECT_DIR$/src/main/webapp/views/quanli" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/views/truongphong/QuanLyNhanVien.jsp" value="file://$PROJECT_DIR$/src/main/webapp/views/truongphong" />
+      </map>
+    </option>
+  </component>
+</project>
