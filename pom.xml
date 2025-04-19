@@ -55,8 +55,13 @@
       <dependency>
           <groupId>mysql</groupId>
           <artifactId>mysql-connector-java</artifactId>
-          <version>8.0.13</version>
+          <version>8.0.28</version> <!-- Thử phiên bản khác -->
       </dependency>
+
+
+
+
+
       <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
       <dependency>
           <groupId>javax.servlet</groupId>

@@ -1,5 +1,5 @@
 package DAO;
-import java.nio.charset.StandardCharsets;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,34 +19,37 @@ import Models.TaiKhoan;
 import JDBCUtils.HandleException;
 import JDBCUtils.JDBCUtil;
 
-public class LoginDAO
-{
+public class LoginDAO {
+
     public TaiKhoan validate(TaiKhoan login) throws ClassNotFoundException {
         TaiKhoan taikhoan = null;
 
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
 
         try (Connection connection = JDBCUtil.getConnection();
-             // Step 2:Create a statement using connection object
              PreparedStatement preparedStatement = connection
-                     .prepareStatement("select * from taikhoan where TenDangNhap = ? and MatKhau = ? ")) {
+                     .prepareStatement("SELECT * FROM project_web.taikhoan WHERE TenDangNhap = ? AND MatKhau = ? ")) {
+
+            if (connection == null) {
+                System.err.println("Kết nối cơ sở dữ liệu không thành công.");
+                return null;
+            }
+
             preparedStatement.setString(1, login.getTenDangNhap());
             preparedStatement.setString(2, login.getMatKhau());
 
             System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
 
-            while(rs.next())
-            {
+            if (rs.next()) {
                 String tendangnhap = rs.getString("TenDangNhap");
                 String matkhau = rs.getString("MatKhau");
                 String mataikhoan = rs.getString("MaTaiKhoan");
                 String quyen = rs.getString("Quyen");
-                taikhoan = new TaiKhoan(tendangnhap,matkhau,mataikhoan,quyen);
+                taikhoan = new TaiKhoan(tendangnhap, matkhau, mataikhoan, quyen);
             }
 
         } catch (SQLException e) {
-            // process sql exception
             HandleException.printSQLException(e);
         }
         return taikhoan;
@@ -82,19 +85,18 @@ public class LoginDAO
         msg.setRecipients(Message.RecipientType.TO, toAddresses);
         msg.setSubject(tendangnhap);
         msg.setSentDate(new Date());
-        msg.setText("Your password : "+LayMatKhau(tendangnhap,toAddress));
+        msg.setText("Your password : "+LayMatKhau(tendangnhap, toAddress));
 
         // sends the e-mail
         Transport.send(msg);
-
     }
-    public static String LayMatKhau(String tenDangNhap,String email)
-    {
+
+    public static String LayMatKhau(String tenDangNhap, String email) {
         String result = "";
         try (Connection connection = JDBCUtil.getConnection();
-
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "select MatKhau from thongtinnguoidung join taikhoan on thongtinnguoidung.MaTaiKhoan=taikhoan.MaTaiKhoan where TenDangnhap = ? and Email = ?");) {
+                     "SELECT MatKhau FROM thongtinnguoidung JOIN taikhoan ON thongtinnguoidung.MaTaiKhoan=taikhoan.MaTaiKhoan WHERE TenDangnhap = ? AND Email = ?")) {
+
             preparedStatement.setString(1, tenDangNhap);
             preparedStatement.setString(2, email);
             ResultSet rs = preparedStatement.executeQuery();

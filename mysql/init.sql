@@ -1,7 +1,8 @@
-CREATE DATABASE project_web;
+CREATE DATABASE IF NOT EXISTS project_web;
 USE project_web;
+
 -- Table for user information
-CREATE TABLE thongtinnguoidung (
+CREATE TABLE IF NOT EXISTS thongtinnguoidung (
     MaTaiKhoan VARCHAR(10) PRIMARY KEY,
     HoTen VARCHAR(50),
     GioiTinh VARCHAR(3),
@@ -22,16 +23,16 @@ CREATE TABLE thongtinnguoidung (
 );
 
 -- Table for account details
-CREATE TABLE taikhoan (
+CREATE TABLE IF NOT EXISTS taikhoan (
     TenDangNhap VARCHAR(20) PRIMARY KEY,
     MatKhau VARCHAR(45),
     MaTaiKhoan VARCHAR(10),
     Quyen VARCHAR(45),
-    FOREIGN KEY (MaTaiKhoan) REFERENCES ThongTinNguoiDung(MaTaiKhoan)
+    FOREIGN KEY (MaTaiKhoan) REFERENCES thongtinnguoidung(MaTaiKhoan)
 );
 
 -- Table for recruitment requests
-CREATE TABLE yeucau (
+CREATE TABLE IF NOT EXISTS yeucau (
     MaYeuCau VARCHAR(10) PRIMARY KEY,
     MaPhongBan VARCHAR(10),
     ViTriLamViec VARCHAR(100),
@@ -41,7 +42,7 @@ CREATE TABLE yeucau (
 );
 
 -- Table for decisions
-CREATE TABLE quyetdinh (
+CREATE TABLE IF NOT EXISTS quyetdinh (
     MaQuyetDinh VARCHAR(10) PRIMARY KEY,
     LoaiQuyetDinh VARCHAR(45),
     Ngay DATE,
@@ -51,7 +52,7 @@ CREATE TABLE quyetdinh (
 );
 
 -- Table for branch information
-CREATE TABLE chinhanh (
+CREATE TABLE IF NOT EXISTS chinhanh (
     MaChiNhanh VARCHAR(10) PRIMARY KEY,
     TenChiNhanh VARCHAR(100),
     SoNha VARCHAR(45),
@@ -64,7 +65,7 @@ CREATE TABLE chinhanh (
 );
 
 -- Table for job positions
-CREATE TABLE chucvu (
+CREATE TABLE IF NOT EXISTS chucvu (
     MaChucVu VARCHAR(10) PRIMARY KEY,
     TenChucVu VARCHAR(45),
     MaChiNhanh VARCHAR(10),
@@ -74,14 +75,14 @@ CREATE TABLE chucvu (
 );
 
 -- Table for department information
-CREATE TABLE thongtinphongban (
+CREATE TABLE IF NOT EXISTS thongtinphongban (
     MaPB VARCHAR(10) PRIMARY KEY,
     TenPB VARCHAR(100),
     MoTa VARCHAR(1000)
 );
 
 -- Table for department assignments
-CREATE TABLE phanbophongban (
+CREATE TABLE IF NOT EXISTS phanbophongban (
     MaChiNhanh VARCHAR(10),
     MaPB VARCHAR(10),
     NgayTao DATE,
@@ -90,7 +91,7 @@ CREATE TABLE phanbophongban (
 );
 
 -- Table for employee assignments to positions
-CREATE TABLE congtac (
+CREATE TABLE IF NOT EXISTS congtac (
     MaNhanVien VARCHAR(10),
     MaChucVu VARCHAR(10),
     NgayBatDau DATE,
@@ -99,7 +100,7 @@ CREATE TABLE congtac (
 );
 
 -- Table for team details
-CREATE TABLE nhom (
+CREATE TABLE IF NOT EXISTS nhom (
     MaNhom VARCHAR(10) PRIMARY KEY,
     TenNhom VARCHAR(100),
     MoTaNhiemVu VARCHAR(1000)

@@ -1,29 +1,31 @@
 version: '3'
+
 services:
   mysql:
     image: mysql:8
     container_name: mysql_container
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: 17022003
       MYSQL_DATABASE: project_web
-      MYSQL_USER: user
-      MYSQL_PASSWORD: pass
     ports:
       - "3307:3306"
+    volumes:
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql  # Mount init.sql vào MySQL container
     networks:
       - app-network
 
   tomcat:
-    build: .  # Chỉ định Dockerfile trong thư mục hiện tại
+    build: .  # Dockerfile cùng thư mục
     container_name: tomcat_container
     ports:
-      - "8080:8080"  # Mở cổng 8080 cho Tomcat
+      - "8080:8080"
     depends_on:
-      - mysql  # Đảm bảo MySQL đã khởi động trước Tomcat
+      - mysql
+
     environment:
-      - DB_URL=jdbc:mysql://mysql:3306/project_web  # Đảm bảo URL kết nối đúng
-      - DB_USER=user  # Sử dụng tên người dùng là 'user'
-      - DB_PASSWORD=pass  # Sử dụng mật khẩu là 'pass'
+      - DB_URL=jdbc:mysql://mysql_container:3306/project_web?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+      - DB_USER=root
+      - DB_PASSWORD=17022003
     networks:
       - app-network
 
