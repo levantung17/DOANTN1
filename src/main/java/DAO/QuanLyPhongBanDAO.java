@@ -259,8 +259,8 @@ public class QuanLyPhongBanDAO {
 
   public static void main(String[] args) {
     QuanLyPhongBanDAO quanLyPhongBanDAO = new QuanLyPhongBanDAO();
-    String maChiNhanh = quanLyPhongBanDAO.LayMaChiNhanh("TK006");
-    String maPhongBan = quanLyPhongBanDAO.LayMaPhongBan("TK006");
+    String maChiNhanh = quanLyPhongBanDAO.LayMaChiNhanh("CN01");
+    String maPhongBan = quanLyPhongBanDAO.LayMaPhongBan("PB01");
 //    List<ThongTinTruongPhong> result = quanLyPhongBanDAO.selectAllPhongBan(maChiNhanh, maPhongBan,
 //        "giamdoc");
 //    for (ThongTinTruongPhong thongTinPhongBan : result) {
@@ -277,7 +277,7 @@ public class QuanLyPhongBanDAO {
 //    boolean result = quanLyPhongBanDAO.AddPhongBan("CN101", "PB101", "Test",
 //        "2023-12-06", "9844037288", "CV101", "Phong Ki Thuat", 10000000, "NV101", "2023-12-06");
 //    System.out.println(result);
-    boolean result = quanLyPhongBanDAO.XoaPhongBan("PB101");
+    boolean result = quanLyPhongBanDAO.XoaPhongBan("PB01");
     System.out.println(result);
   }
 }

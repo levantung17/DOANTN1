@@ -95,7 +95,7 @@ public class LoginDAO {
         String result = "";
         try (Connection connection = JDBCUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT MatKhau FROM thongtinnguoidung JOIN taikhoan ON thongtinnguoidung.MaTaiKhoan=taikhoan.MaTaiKhoan WHERE TenDangnhap = ? AND Email = ?")) {
+                     "SELECT MatKhau FROM thongtinnguoidung JOIN taikhoan ON thongtinnguoidung.MaTaiKhoan=taikhoan.MaTaiKhoan WHERE TenDangNhap = ? AND Email = ?")) {
 
             preparedStatement.setString(1, tenDangNhap);
             preparedStatement.setString(2, email);

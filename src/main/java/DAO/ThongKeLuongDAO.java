@@ -12,16 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ThongKeLuongDAO {
-    public ThongKeLuongDAO(){}
+    public ThongKeLuongDAO() {}
 
-    public List< Luong > selectInfoSalary ()
-    {
-        List <Luong> info = new ArrayList<>();
+    public List<Luong> selectInfoSalary() {
+        List<Luong> info = new ArrayList<>();
 
         try (Connection connection = JDBCUtil.getConnection();
-
-             PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT * FROM thongtinluong");) {
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM thongtinluong")) {
 
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -33,7 +30,11 @@ public class ThongKeLuongDAO {
                 int luongcoban = rs.getInt("LuongCoBan");
                 double luongchinhthuc = rs.getDouble("LuongChinhThuc");
 
-                info.add(new Luong(manv,hoten,heso,tencv,luongcoban,luongchinhthuc));
+                Luong luong = new Luong(manv, hoten, heso, tencv, luongcoban, luongchinhthuc);
+                info.add(luong);
+
+                // In ra console
+                System.out.println(luong);
             }
         } catch (SQLException e) {
             HandleException.printSQLException(e);
@@ -41,15 +42,14 @@ public class ThongKeLuongDAO {
         return info;
     }
 
-    public List< Luong > selectInfoSalaryForBranch (String maChiNhanh)
-    {
-        List <Luong> info = new ArrayList<>();
+    public List<Luong> selectInfoSalaryForBranch(String maChiNhanh) {
+        List<Luong> info = new ArrayList<>();
 
         try (Connection connection = JDBCUtil.getConnection();
-
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT * FROM thongtinluong where MaChiNhanh = ?");) {
-            preparedStatement.setString(1,maChiNhanh);
+                     "SELECT * FROM thongtinluong WHERE MaChiNhanh = ?")) {
+
+            preparedStatement.setString(1, maChiNhanh);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -60,7 +60,11 @@ public class ThongKeLuongDAO {
                 int luongcoban = rs.getInt("LuongCoBan");
                 double luongchinhthuc = rs.getDouble("LuongChinhThuc");
 
-                info.add(new Luong(manv,hoten,heso,tencv,luongcoban,luongchinhthuc));
+                Luong luong = new Luong(manv, hoten, heso, tencv, luongcoban, luongchinhthuc);
+                info.add(luong);
+
+                // In ra console
+                System.out.println(luong);
             }
         } catch (SQLException e) {
             HandleException.printSQLException(e);
@@ -68,16 +72,15 @@ public class ThongKeLuongDAO {
         return info;
     }
 
-    public List< Luong > selectInfoSalaryForDepart(String maChiNhanh, String maPhongBan)
-    {
-        List <Luong> info = new ArrayList<>();
+    public List<Luong> selectInfoSalaryForDepart(String maChiNhanh, String maPhongBan) {
+        List<Luong> info = new ArrayList<>();
 
         try (Connection connection = JDBCUtil.getConnection();
-
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT * FROM thongtinluong where MaChiNhanh = ? and MaPhongBan = ?");) {
-            preparedStatement.setString(1,maChiNhanh);
-            preparedStatement.setString(2,maPhongBan);
+                     "SELECT * FROM thongtinluong WHERE MaChiNhanh = ? AND MaPhongBan = ?")) {
+
+            preparedStatement.setString(1, maChiNhanh);
+            preparedStatement.setString(2, maPhongBan);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -88,7 +91,11 @@ public class ThongKeLuongDAO {
                 int luongcoban = rs.getInt("LuongCoBan");
                 double luongchinhthuc = rs.getDouble("LuongChinhThuc");
 
-                info.add(new Luong(manv,hoten,heso,tencv,luongcoban,luongchinhthuc));
+                Luong luong = new Luong(manv, hoten, heso, tencv, luongcoban, luongchinhthuc);
+                info.add(luong);
+
+                // In ra console
+                System.out.println(luong);
             }
         } catch (SQLException e) {
             HandleException.printSQLException(e);
@@ -96,19 +103,16 @@ public class ThongKeLuongDAO {
         return info;
     }
 
-    public List< Luong > findListSalary (String tenCN, String tenPB, String tenCV)
-    {
-        List <Luong> info = new ArrayList<>();
+    public List<Luong> findListSalary(String tenCN, String tenPB, String tenCV) {
+        List<Luong> info = new ArrayList<>();
 
         try (Connection connection = JDBCUtil.getConnection();
-
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT * FROM thongtinluong where TenChiNhanh LIKE ? and TenPB LIKE ? and TenChucVu LIKE ?");) {
+                     "SELECT * FROM thongtinluong WHERE TenChiNhanh LIKE ? AND TenPB LIKE ? AND TenChucVu LIKE ?")) {
 
-            preparedStatement.setString(1,tenCN);
-            preparedStatement.setString(2,tenPB);
-            preparedStatement.setString(3,tenCV);
-
+            preparedStatement.setString(1, "%" + tenCN + "%");
+            preparedStatement.setString(2, "%" + tenPB + "%");
+            preparedStatement.setString(3, "%" + tenCV + "%");
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -119,7 +123,11 @@ public class ThongKeLuongDAO {
                 int luongcoban = rs.getInt("LuongCoBan");
                 double luongchinhthuc = rs.getDouble("LuongChinhThuc");
 
-                info.add(new Luong(manv,hoten,heso,tencv,luongcoban,luongchinhthuc));
+                Luong luong = new Luong(manv, hoten, heso, tencv, luongcoban, luongchinhthuc);
+                info.add(luong);
+
+                // In ra console
+                System.out.println(luong);
             }
         } catch (SQLException e) {
             HandleException.printSQLException(e);

@@ -132,7 +132,7 @@ public class CapNhatThongTinDAO {
   //  Test
   public static void main(String[] args) {
     CapNhatThongTinDAO capNhatThongTinDAO = new CapNhatThongTinDAO();
-    List<ThongTinCongTac> result = capNhatThongTinDAO.ThongTinCaNhanCongTy("TK022");
+    List<ThongTinCongTac> result = capNhatThongTinDAO.ThongTinCaNhanCongTy("TK01");
     for (ThongTinCongTac thongTinCongTac : result) {
       System.out.println(thongTinCongTac.getManhanvien());
       System.out.println(thongTinCongTac.getTennhanvien());

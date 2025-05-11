@@ -26,7 +26,7 @@
             crossorigin="anonymous"
     />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css" />
-    <link href="${pageContext.request.contextPath}/img/logo.png" rel="icon" />
+    <link href="${pageContext.request.contextPath}/img/logo1.png" rel="icon" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
     <script>
@@ -46,12 +46,12 @@
         <h2 class="text-center mt-3 p-1">Hệ Thống Quản Lí Nhân Sự Công Ty</h2>
 
         <div class="col-md-6 d-none d-md-block">
-            <img src="${pageContext.request.contextPath}/img/4565.jpg" class="img-fluid main-logo" />
+            <img src="${pageContext.request.contextPath}/img/7.jpg" class="img-fluid main-logo" />
         </div>
         <div
                 class="col-md-5 bg-white m-5 p-5 border border-4 border-gray rounded"
         >
-            <img src="${pageContext.request.contextPath}/img/logo.png" alt="logo" class="card-img-top logo-img" />
+            <img src="${pageContext.request.contextPath}/img/logo1.png" alt="logo" class="card-img-top logo-img" />
             <h3 class="pb-3 mt-2 text-center">Đăng nhập</h3>
             <div class="form-style">
                 <form id="commonForm" action="<%=request.getContextPath()%>/login" method="post">
